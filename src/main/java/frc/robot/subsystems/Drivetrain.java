@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class DriveSubsystem extends SubsystemBase {
+public class Drivetrain extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public DriveSubsystem() {}
+  public Drivetrain() {}
 
   /**
    * Example command factory method.
