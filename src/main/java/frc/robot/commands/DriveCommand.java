@@ -6,22 +6,28 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
+import java.util.function.DoubleSupplier;
 
 /** An example command that uses an example subsystem. */
-public class ExampleCommand extends Command {
+public class DriveCommand extends Command {
   @SuppressWarnings("PMD.UnusedPrivateField")
-  private final Drivetrain m_subsystem;
+  Drivetrain drivetrain;
+  DoubleSupplier xSupplier, ySupplier, rotSupplier;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(Drivetrain subsystem) {
-    m_subsystem = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+  public DriveCommand(Drivetrain drivetrain, DoubleSupplier xSupplier, DoubleSupplier ySupplier, DoubleSupplier rotSupplier) {
+        this.drivetrain = drivetrain;
+        this.xSupplier = xSupplier;
+        this.ySupplier = ySupplier;
+        this.rotSupplier = rotSupplier;
+        addRequirements(drivetrain);
   }
+  
+ 
 
   // Called when the command is initially scheduled.
   @Override
