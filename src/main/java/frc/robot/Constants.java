@@ -16,4 +16,7 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
+
+  public static final double MAX_SPEED = 6.0;
+  public static final double deadzone = 0.05;
 }
