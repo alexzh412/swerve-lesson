@@ -26,8 +26,6 @@ public class DriveCommand extends Command {
         this.rotSupplier = rotSupplier;
         addRequirements(drivetrain);
   }
-  
- 
 
   // Called when the command is initially scheduled.
   @Override
