@@ -1,37 +1,52 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import java.io.File;
+import java.io.IOException;
+
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj.Filesystem;
+
+import swervelib.parser.SwerveParser;
 import swervelib.SwerveDrive;
 
+import yams.mechanisms.swerve.utility.SwerveInputStream;
 
+public class Drivetrain extends SubsystemBase
+{
 
-public class Drivetrain extends SubsystemBase {
-  public SwerveDrive m_swerveDrive;
+  public SwerveDrive drive;
 
-
-  /** Creates a new ExampleSubsystem. */
-  public Drivetrain() {}
-
-  
-  public Command exampleMethodCommand() {
-    return runOnce(
-        () -> {
-          /* one-time action goes here */
-        });
+  public Drivetrain(File swerveConfigFile)
+  {
+    try{
+      drive = new SwerveParser(swerveConfigFile).createSwerveDrive(6.7, new Pose2d());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
-  public boolean exampleCondition() {
-    // Query some boolean state, such as a digital sensor.
-    return false;
+  public SwerveDrive getDrive()
+  {
+    return drive;
+  }
+  /** Drive with a field relative SwerveInputStream. */
+  public Command driveFieldRelative(SwerveInputStream stream)
+  {
+    return run(() -> drive.setChassisSpeeds(stream.get())).withName("Drive Field Relative");
+  }
+
+  /** Zero the gyro heading. Bind this to a button combo for field recovery. */
+  public Command zeroGyro()
+  {
+    return Commands.runOnce(drive::zeroGyro, this).withName("Zero Gyro");
   }
 
   @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+  public void periodic()
+  {
+    drive.updateOdometry();
   }
 
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
-  }
 }
