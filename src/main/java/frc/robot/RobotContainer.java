@@ -27,7 +27,10 @@ public class RobotContainer {
   private final CommandJoystick m_driverController =
       new CommandJoystick(1);
   
-  private final DriveCommand driveCommand = new DriveCommand(m_swerveDrive, () -> m_driverController.getRawAxis(1), () -> m_driverController.getRawAxis(0), () -> m_driverController.getRawAxis(2));
+  private final DriveCommand driveCommand = new DriveCommand(m_swerveDrive, 
+                                                             () -> m_driverController.getRawAxis(1), 
+                                                             () -> m_driverController.getRawAxis(0), 
+                                                             () -> m_driverController.getRawAxis(2));
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
