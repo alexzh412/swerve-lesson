@@ -1,7 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.commands;
 
 import frc.robot.Constants;
@@ -45,9 +41,30 @@ public class DriveCommand extends Command {
   @Override
   public void end(boolean interrupted) {}
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+public class DriveCommand extends Command {
+    Drivetrain drivetrain;
+    DoubleSupplier xSupplier, ySupplier, thetaSupplier; 
+    public DriveCommand(Drivetrain drivetrain, DoubleSupplier xSupplier, DoubleSupplier ySupplier, DoubleSupplier thetaSupplier){
+        this.drivetrain=drivetrain;
+        this.xSupplier=xSupplier;
+        this.ySupplier=ySupplier;
+        this.thetaSupplier=thetaSupplier;
+    }
+    @Override
+    public void execute(){
+        drivetrain.m_swerveDrive.driveFieldOriented(new ChassisSpeeds(
+        Constants.MAX_SPEED*xSupplier.getAsDouble(),
+        Constants.MAX_SPEED*ySupplier.getAsDouble(),
+        Constants.MAX_SPEED*thetaSupplier.getAsDouble()
+        ));
+    }
+    
+    @Override
+    public HashSet<Subsystem> getRequirements(){
+        HashSet<Subsystem> req = new HashSet<>();
+        req.add (drivetrain);
+        return req;
+       
+    
+    }
 }
