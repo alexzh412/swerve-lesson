@@ -21,7 +21,7 @@ public class SwerveDriveSubsystem extends SubsystemBase
 
   public SwerveDriveSubsystem()
   {
-    try{
+    try {
       drive = new SwerveParser(new File(Filesystem.getDeployDirectory(), "swerve")).createSwerveDrive(6.7, new Pose2d());
     } catch (IOException e) {
       e.printStackTrace();

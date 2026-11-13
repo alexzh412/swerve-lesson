@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.Command;
 import java.util.function.DoubleSupplier;
 
@@ -29,11 +30,18 @@ public class DriveCommand extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    drivetrain.m_swerveDrive.driveFieldOriented(new ChassisSpeeds());
+    Constants.MAX_SPEED * xSupplier.getAsDouble(), 
+    Constants.MAX_SPEED * ySupplier.getAsDouble(), 
+    Constants.MAX_SPEED * rotSupplier.getAsDouble();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
