@@ -47,7 +47,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    
+    m_drivetrain.setDefaultCommand(m_driveCommand);
   }
 
   /**
