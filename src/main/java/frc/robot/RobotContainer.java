@@ -22,8 +22,7 @@ public class RobotContainer {
   private final SwerveDriveSubsystem m_swerveDrive = new SwerveDriveSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandJoystick m_driverController =
-      new CommandJoystick(1);
+  private final CommandJoystick m_driverController = new CommandJoystick(1);
   
   private final DriveCommand driveCommand = new DriveCommand(m_swerveDrive, 
                                                              () -> m_driverController.getRawAxis(1), 
@@ -47,7 +46,6 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    
     m_swerveDrive.setDefaultCommand(driveCommand);
     m_driverController.button(3).onTrue(Commands.runOnce(m_swerveDrive::zeroGyro));
   }
