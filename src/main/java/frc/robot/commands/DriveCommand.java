@@ -1,12 +1,7 @@
 package frc.robot.commands;
 
-import java.util.HashSet;
 import java.util.function.DoubleSupplier;
-
-import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.Constants;
 import frc.robot.subsystems.SwerveDriveSubsystem;
 import swervelib.SwerveInputStream;
 
@@ -19,7 +14,7 @@ public class DriveCommand extends Command {
     public DriveCommand(SwerveDriveSubsystem swerveDrivetrain, DoubleSupplier xSupplier, DoubleSupplier ySupplier, DoubleSupplier thetaSupplier){
         this.swerveDrivetrain = swerveDrivetrain;
         this.swerveInputStream = SwerveInputStream.of(swerveDrivetrain.getSwerveDrive(), xSupplier, ySupplier).withControllerRotationAxis(thetaSupplier).deadband(.05);
-        addRequirements(swerveDrivetrain);
+        addRequirements(swerveDrivetrain); //prevents program from running two commands at once (which would crash the program)
 
     }
 

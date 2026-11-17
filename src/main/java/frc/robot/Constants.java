@@ -18,5 +18,6 @@ public final class Constants {
   }
 
   public static final double MAX_SPEED = 6.0;
-  public static final double deadzone = 0.05;
+  public static final double deadzone = 0.05; //prevents robot moving while controller is neutral 
+                                              //bigger num = more controller movement needed to move the robot
 }

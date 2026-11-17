@@ -4,10 +4,8 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.SwerveDriveSubsystem;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -50,6 +48,7 @@ public class RobotContainer {
    */
   private void configureBindings() {
     
+    m_swerveDrive.setDefaultCommand(driveCommand);
     m_driverController.button(3).onTrue(Commands.runOnce(m_swerveDrive::zeroGyro));
   }
 
