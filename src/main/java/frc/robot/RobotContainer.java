@@ -47,7 +47,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    
+    m_drivetrain.setDefaultCommand(m_driveCommand);
   }
 
   /**
@@ -57,6 +57,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_drivetrain);
+    return null;
   }
 }
