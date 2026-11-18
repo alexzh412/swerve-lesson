@@ -18,6 +18,7 @@ public class Drivetrain extends SubsystemBase
 {
 
   public SwerveDrive drive;
+public Object m_swerveDrive;
 
   public Drivetrain(File swerveConfigFile)
   {
