@@ -1,29 +1,27 @@
 {
-  "$schema": "https://config.yagsl.com/schemas/module.json",
-  "drive": {
-    "type": "talonfx_krakenx60",
-    "id": 3,
-    "canbus": "0"
+  "location": {
+    "front": 10.92,
+    "left": 10.92
   },
-  "angle": {
-    "type": "talonfx_falcon",
-    "id": 42,
-    "canbus": "0"
+  "absoluteEncoderOffset": 1.288,
+  "drive": {
+    "type": "krakenx60",
+    "id": 3,
+    "canbus": null
   },
   "inverted": {
-    "drive": false,
-    "angle": false
+    "drive": true,
+    "angle": true
   },
-  "absoluteEncoder": {
-    "type": "analog_attached",
-    "id": 0,
-    "channel": 0,
-    "canbus": ""
+  "angle": {
+    "type": "falcon",
+    "id": 42,
+    "canbus": null
   },
-  "absoluteEncoderOffset": 0,
-  "absoluteEncoderInverted": false,
-  "location": {
-    "front": 13.5,
-    "left": 13.5
-  }
+  "encoder": {
+    "type": "analog",
+    "id": 2,
+    "canbus": null
+  },
+  "absoluteEncoderInverted": false
 }
